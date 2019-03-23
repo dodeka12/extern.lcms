@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="RTM|Win32">
+      <Configuration>RTM</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RTM|x64">
+      <Configuration>RTM</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{71DEDE59-3F1E-486B-A899-4283000F76B5}</ProjectGuid>
+    <RootNamespace>lcms2_static</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <SccProjectName>SAK</SccProjectName>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccProvider>SAK</SccProvider>
+    <ProjectName>lcms</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RTM|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RTM|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='RTM|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+    <Import Project="..\..\..\..\RxModuleData.props" />
+    <Import Project="..\..\..\..\..\..\..\_global\PropSheets\RxStdPaths.props" />
+    <Import Project="..\..\..\..\..\..\..\_global\PropSheets\RxStdTypeLib.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='RTM|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+    <Import Project="..\..\..\..\RxModuleData.props" />
+    <Import Project="..\..\..\..\..\..\..\_global\PropSheets\RxStdPaths.props" />
+    <Import Project="..\..\..\..\..\..\..\_global\PropSheets\RxStdTypeLib.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.21006.1</_ProjectFileVersion>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='RTM|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='RTM|x64'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='RTM|Win32'" />
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='RTM|x64'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='RTM|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='RTM|x64'" />
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RTM|Win32'">
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>../../../include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <ExceptionHandling>false</ExceptionHandling>
+    </ClCompile>
+    <PreBuildEvent>
+      <Command>xcopy "$(ProjectDir)..\..\..\include\*.h" "$(RxIncludeDir)$(RxModName)-$(RxModVerShort)\lcms2" /R /Y /Q /I /EXCLUDE:$(RxGlobalDir)Exclude.txt</Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>xcopy "$(ProjectDir)..\..\..\include\*.h" "$(RxDistModDir)$(RxModName)-$(RxModVerShort)\_include\$(RxModName)-$(RxModVerShort)\lcms" /R /Y /Q /I /EXCLUDE:$(RxGlobalDir)Exclude.txt
+call "$(RxGlobalDir)Tools\BuildEvent_CopyDistOutput.bat" LIB $(TargetPath)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RTM|x64'">
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>../../../include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <ExceptionHandling>false</ExceptionHandling>
+    </ClCompile>
+    <PreBuildEvent>
+      <Command>xcopy "$(ProjectDir)..\..\..\include\*.h" "$(RxIncludeDir)$(RxModName)-$(RxModVerShort)\lcms2" /R /Y /Q /I /EXCLUDE:$(RxGlobalDir)Exclude.txt</Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>xcopy "$(ProjectDir)..\..\..\include\*.h" "$(RxDistModDir)$(RxModName)-$(RxModVerShort)\_include\$(RxModName)-$(RxModVerShort)\lcms" /R /Y /Q /I /EXCLUDE:$(RxGlobalDir)Exclude.txt
+call "$(RxGlobalDir)Tools\BuildEvent_CopyDistOutput.bat" LIB $(TargetPath)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\cmscam02.c" />
+    <ClCompile Include="..\..\..\src\cmscgats.c" />
+    <ClCompile Include="..\..\..\src\cmscnvrt.c" />
+    <ClCompile Include="..\..\..\src\cmserr.c" />
+    <ClCompile Include="..\..\..\src\cmsgamma.c" />
+    <ClCompile Include="..\..\..\src\cmsgmt.c" />
+    <ClCompile Include="..\..\..\src\cmsintrp.c" />
+    <ClCompile Include="..\..\..\src\cmsio0.c" />
+    <ClCompile Include="..\..\..\src\cmsio1.c" />
+    <ClCompile Include="..\..\..\src\cmslut.c" />
+    <ClCompile Include="..\..\..\src\cmsmd5.c" />
+    <ClCompile Include="..\..\..\src\cmsmtrx.c" />
+    <ClCompile Include="..\..\..\src\cmsnamed.c" />
+    <ClCompile Include="..\..\..\src\cmsopt.c" />
+    <ClCompile Include="..\..\..\src\cmspack.c" />
+    <ClCompile Include="..\..\..\src\cmspcs.c" />
+    <ClCompile Include="..\..\..\src\cmsplugin.c" />
+    <ClCompile Include="..\..\..\src\cmsps2.c" />
+    <ClCompile Include="..\..\..\src\cmssamp.c" />
+    <ClCompile Include="..\..\..\src\cmssm.c" />
+    <ClCompile Include="..\..\..\src\cmstypes.c" />
+    <ClCompile Include="..\..\..\src\cmsvirt.c" />
+    <ClCompile Include="..\..\..\src\cmswtpnt.c" />
+    <ClCompile Include="..\..\..\src\cmsxform.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\src\lcms2_internal.h" />
+    <ClInclude Include="..\..\..\include\lcms2.h" />
+    <ClInclude Include="..\..\..\include\lcms2_plugin.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
